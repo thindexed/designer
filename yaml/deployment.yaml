@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: circuit
+  name: designer
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: circuit
+      name: designer
   template:
     metadata:
       labels:
-        name: circuit
+        name: designer
     spec:
       containers:
-      - name: circuit
+      - name: designer
         image: docker.io/freegroup/thindexed-circuit:0.1.0-126

@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: circuit
+  name: designer
   namespace: default
 spec:
   hosts: ["app.<DOMAIN>"]
@@ -10,15 +10,15 @@ spec:
   http:
     - match:
       - uri:
-          exact: "/circuit"
+          exact: "/designer"
       redirect:
-        uri: "/circuit/"
+        uri: "/designer/"
     - match:
       - uri:
-          prefix: "/circuit/"
+          prefix: "/designer/"
       rewrite:
         uri: "/"
       route:
         - destination:
-            host: circuit
+            host: designer
 
