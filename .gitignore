@@ -1,0 +1,12 @@
+src/web/common
+src/web/js/webpack
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# Dependency directories
+node_modules
+
+# dotenv environment variables file
+.env
+.env.test
