@@ -1,7 +1,11 @@
 import axios from "axios"
 
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
+
 import "../less/index.less"
-import "font-awesome/css/font-awesome.css"
 import global from "./global"
 import conf from "./Configuration"
 

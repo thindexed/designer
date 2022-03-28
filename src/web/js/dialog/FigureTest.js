@@ -94,6 +94,7 @@ export default class FigureTest {
 
       canvas.setCurrentSelection(test)
       let removeDialog = function () {
+
         _this.simulate = false
         splash.removeClass("open")
         setTimeout(function () {
@@ -102,7 +103,7 @@ export default class FigureTest {
         }, 400)
       }
 
-      $("#test_close").on("click", removeDialog)
+      $(".tinyFlyoverMenu").on("click", "#test_close", removeDialog)
       splash.addClass("open")
 
       test.onStart(_this.simulationContext)
@@ -110,7 +111,6 @@ export default class FigureTest {
       _this.simulate = true
       requestAnimationFrame(_this.animationFrameFunc)
     })
-
   }
 
   _calculate() {

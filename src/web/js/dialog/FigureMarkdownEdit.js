@@ -37,8 +37,8 @@ export default class FigureMarkdownEdit {
              <span class="right">HTML Preview</span>
           </div>
           <div class="tinyFlyoverMenu">
-            <div id="test_commit" class="fa fa-check-square-o"></div>
-            <div id="test_cancel" class='fa fa-minus-square-o' ></div>
+            <div id="test_commit" class="fa-regular fa-check-square"></div>
+            <div id="test_cancel" class='fa-regular fa-minus-square' ></div>
           </div>
       <div>
       `)
@@ -48,23 +48,22 @@ export default class FigureMarkdownEdit {
     // zufrieden.
     $("body").append(splash)
 
-    $("#test_commit").on("click", () => {
+    $(".tinyFlyoverMenu").on("click", "#test_commit", () => {
       Mousetrap.unpause()
       shape_designer.app.setConfiguration({markdown: this.editor.getValue()})
       splash.removeClass("open")
-      setTimeout(function () {
+      setTimeout( () => {
         splash.remove()
       }, 400)
     })
     
-    $("#test_cancel").on("click", () => {
+    $(".tinyFlyoverMenu").on("click", "#test_cancel", () => {
       Mousetrap.unpause()
       splash.removeClass("open")
-      setTimeout(function () {
+      setTimeout(() => {
         splash.remove()
       }, 400)
     })
-
 
     setTimeout( () => {
       splash.addClass("open")

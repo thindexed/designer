@@ -13,9 +13,9 @@ export default class FigureCodeEdit {
             <pre class="codeContainer">
             </pre>
               <div class="tinyFlyoverMenu codeOverlay">
-                <div id="test_run"    class="fa fa-play"></div>
-                <div id="test_commit" class="fa fa-check-square-o"></div>
-                <div id="test_cancel" class='fa fa-minus-square-o' ></div>
+                <i id="test_run"    class="fa-regular fa-play-circle"></i> 
+                <i id="test_commit" class="fa-regular fa-check-square"></i>
+                <i id="test_cancel" class='fa-regular fa-minus-square' ></i>
               </div>
           </div>
             `
@@ -87,7 +87,7 @@ export default class FigureCodeEdit {
     range2.end = session.doc.createAnchor(range2.end)
     range2.end.$insertRight = true
 
-    $("#test_commit").on("click", function () {
+    $(".tinyFlyoverMenu").on("click", "#test_commit", () => {
       let code = editor.getValue()
       shape_designer.app.setConfiguration({code: code})
       Mousetrap.unpause()
@@ -96,14 +96,14 @@ export default class FigureCodeEdit {
       })
     })
 
-    $("#test_cancel").on("click", function () {
+    $(".tinyFlyoverMenu" ).on("click", "#test_cancel", () => {
       Mousetrap.unpause()
       splash.fadeOut(function () {
         splash.remove()
       })
     })
 
-    $("#test_run").on("click", function () {
+    $(".tinyFlyoverMenu").on("click", "#test_run", () => {
       let code = editor.getValue()
       shape_designer.app.setConfiguration({code: code})
       new FigureTest().show()
