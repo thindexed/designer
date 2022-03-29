@@ -1,6 +1,6 @@
 export default {
   fileSuffix: ".shape",
-  appName: "Brainbox Designer",
+  appName: "Thindexed Designer",
   loginRedirect: "designer",
 
   backend: {
@@ -11,12 +11,12 @@ export default {
     },
 
     global:{
-      get:    file => `../api/global/shape/get?filePath=${file}`,
-      image:  file => `../api/global/shape/image?filePath=${file}`,
-      list:   path => `../api/global/shape/list?path=${path}`,
-      delete:         `../api/global/shape/delete`,
-      folder:         `../api/global/shape/folder`,
-      save:           `../api/global/shape/save`
+      get:    file => `../shapes/global/get?filePath=${file}`,
+      image:  file => `../shapes/global/image?filePath=${file}`,
+      list:   path => `../shapes/global/list?path=${path}`,
+      delete:         `../shapes/global/delete`,
+      folder:         `../shapes/global/folder`,
+      save:           `../shapes/global/save`
     }
   }
 }
