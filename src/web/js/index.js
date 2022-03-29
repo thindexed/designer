@@ -58,14 +58,14 @@ window.conf = conf
 
 $(window).load(function () {
 
+  document.title = conf.appName
+
   // export all required classes for deserialize JSON with "eval"
   // "eval" code didn't sees imported class or code
   //
   for(var k in global) window[k]=global[k];
 
-  socket = io({
-      path: '/socket.io'
-    })
+  socket = io({path: '/socket.io'})
 
   // remove the fileOpen/Save stuff if we run in a "serverless" mode. e.g. on gh-pages
   // (fake event from the socket.io mock )
@@ -78,5 +78,4 @@ $(window).load(function () {
     shape_designer.app = app
     $(".loader").fadeOut(500, function() { $(this).remove(); })
   })
-
 })
