@@ -49,8 +49,6 @@ if (!jQuery.browser) {
   jQuery.browser = browser
 }
 
-
-
 // need to be global for the "static" version hosted on gh-pages
 //
 window.conf = conf
@@ -67,9 +65,6 @@ $(window).load(function () {
 
   socket = io({path: '/socket.io'})
 
-  // remove the fileOpen/Save stuff if we run in a "serverless" mode. e.g. on gh-pages
-  // (fake event from the socket.io mock )
-  //
   axios.get("../permissions").then( (response) => {
     let permissions = response.data
 
