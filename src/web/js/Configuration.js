@@ -14,6 +14,7 @@ export default {
       get:    file => `../shapes/global/get?filePath=${file}`,
       image:  file => `../shapes/global/image?filePath=${file}`,
       list:   path => `../shapes/global/list?path=${path}`,
+      rename:         `../shapes/global/rename`,
       delete:         `../shapes/global/delete`,
       folder:         `../shapes/global/folder`,
       save:           `../shapes/global/save`
