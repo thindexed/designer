@@ -250,7 +250,7 @@ class Application {
 
   fileNew(name, scope) {
     $("#leftTabStrip .editor").click()
-    this.view.clear()
+    this.view.reset()
     this.documentConfiguration = $.extend({}, this.documentConfigurationTempl)
     if (name) {
       this.currentFile = { name, scope }

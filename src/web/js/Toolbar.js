@@ -264,7 +264,7 @@ export default class Toolbar {
    *
    * @param {draw2d.Figure} figure
    */
-  onSelectionChanged(emitter, event) {
+  onSelectionChanged(emitter,  event = {figure: null}) {
     if (event.figure === null) {
       $("#editDelete").addClass("disabled")
     }

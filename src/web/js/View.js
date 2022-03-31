@@ -128,6 +128,19 @@ export default draw2d.Canvas.extend({
    *
    */
   reset: function () {
+
+    this.fireEvent("select")
+    // remove the figure from a selection handler as well and cleanup the
+    // selection feedback
+    this.getSelection().each((i,figure) => {
+      console.log(i,figure)
+      this.editPolicy.each((i, policy) => {
+        if (typeof policy.unselect === "function") {
+          policy.unselect(this, figure)
+        }
+      })
+    })
+
     this.clear()
   },
 
@@ -251,8 +264,8 @@ export default draw2d.Canvas.extend({
 
 
   getBoundingBox: function () {
-    let xCoords = [0]
-    let yCoords = [0]
+    let xCoords = []
+    let yCoords = []
     this.getExtFigures().each((i, f) => {
       if (f instanceof shape_designer.figure.ExtPort) {
         return
@@ -261,8 +274,8 @@ export default draw2d.Canvas.extend({
       xCoords.push(b.x, b.x + b.w)
       yCoords.push(b.y, b.y + b.h)
     })
-    let minX = Math.min(...xCoords)
-    let minY = Math.min(...yCoords)
+    let minX = xCoords.length===0?0:Math.min(...xCoords)
+    let minY = yCoords.length===0?0:Math.min(...yCoords)
     let width = Math.max(10, Math.max(...xCoords) - minX)
     let height = Math.max(10, Math.max(...yCoords) - minY)
 
@@ -316,7 +329,6 @@ export default draw2d.Canvas.extend({
     if (this.getExtFigures().getSize()>0){
       center = this.getBoundingBox().getCenter()
     }
-    console.log(center)
     let c = $("#draw2dCanvasWrapper")
     c.scrollTop((center.y / this.getZoom() - c.height() / 2))
     c.scrollLeft((center.x /this.getZoom() - c.width() / 2))
