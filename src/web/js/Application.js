@@ -46,7 +46,7 @@ class Application {
   init(permissions){
     this.permissions = permissions
     this.hasUnsavedChanges = false
-    this.currentFile = { name:"NewDocument"+conf.fileSuffix, scope:"user"}
+    this.currentFile = { name: conf.fileNew + conf.fileSuffix, scope: "user"}
     this.documentConfigurationTempl = {
       baseClass: "draw2d.SetFigure",
       code: $("#shape-edit-template").text().trim()
@@ -256,7 +256,7 @@ class Application {
       this.currentFile = { name, scope }
     } else {
       // currently there is no support for "user" defined shapes. scope should be always "global"
-      this.currentFile = { name: "MyNewShape" , scope:"global"}
+      this.currentFile = { name: conf.fileNew , scope:"global"}
     }
     this.view.getCommandStack().markSaveLocation()
     this.view.centerDocument()

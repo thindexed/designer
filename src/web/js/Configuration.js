@@ -1,8 +1,9 @@
 export default {
   fileSuffix: ".shape",
+  fileNew: "NewComponent",
   appName: "Thindexed Designer",
   loginRedirect: "designer",
-
+  
   backend: {
     user: {
       get:    file => `../api/user/shape/get?filePath=${file}`,

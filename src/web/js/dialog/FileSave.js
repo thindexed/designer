@@ -13,7 +13,7 @@ class Dialog {
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="media-heading">Save Shape </h4>
+                        <h4 class="media-heading">Save Component </h4>
                     </div>
                     <div class="modal-body">
                         <div class="media">
@@ -26,7 +26,7 @@ class Dialog {
         
                                 <div class="form-horizontal">
                                     <br>
-                                    Filename:
+                                    Name:
                                     <fieldset>
                                         <div class="form-group">
                                             <div class="col-lg-12">
