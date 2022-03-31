@@ -251,8 +251,8 @@ export default draw2d.Canvas.extend({
 
 
   getBoundingBox: function () {
-    let xCoords = []
-    let yCoords = []
+    let xCoords = [0]
+    let yCoords = [0]
     this.getExtFigures().each((i, f) => {
       if (f instanceof shape_designer.figure.ExtPort) {
         return
@@ -312,10 +312,14 @@ export default draw2d.Canvas.extend({
   },
 
   centerView: function(){
-    let bb = this.getBoundingBox().getCenter()
+    let center = new draw2d.geo.Point(this.getWidth()/2, this.getHeight()/2)
+    if (this.getExtFigures().getSize()>0){
+      center = this.getBoundingBox().getCenter()
+    }
+    console.log(center)
     let c = $("#draw2dCanvasWrapper")
-    c.scrollTop((bb.y / this.getZoom() - c.height() / 2))
-    c.scrollLeft((bb.x /this.getZoom() - c.width() / 2))
+    c.scrollTop((center.y / this.getZoom() - c.height() / 2))
+    c.scrollLeft((center.x /this.getZoom() - c.width() / 2))
   },
 
   centerDocument: function () {
