@@ -4,6 +4,9 @@ export default {
   appName: "Thindexed Designer",
   loginRedirect: "designer",
   
+  fileScreen: {
+    title: "Component Library"
+  },
   backend: {
     user: {
       get:    file => `../api/user/shape/get?filePath=${file}`,
