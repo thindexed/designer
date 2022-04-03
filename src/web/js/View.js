@@ -120,7 +120,6 @@ export default draw2d.Canvas.extend({
     }
   },
 
-
   /**
    * @method
    * Reset the view/canvas and starts with a clean and new document with default decorations
