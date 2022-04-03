@@ -2,10 +2,11 @@ export default {
   fileSuffix: ".shape",
   fileNew: "NewComponent",
   appName: "Thindexed Designer",
-  loginRedirect: "designer",
   
   fileScreen: {
-    title: "Component Library"
+    title: "Component Library",
+    addFolderButton: "Folder",
+    addFileButton: "Component"
   },
   backend: {
     user: {
