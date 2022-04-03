@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: designer
-        image: docker.io/freegroup/thindexed-designer:0.1.0-52
+        image: docker.io/freegroup/thindexed-designer:0.1.0-55
