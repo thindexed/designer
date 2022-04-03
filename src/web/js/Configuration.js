@@ -8,6 +8,7 @@ export default {
     addFolderButton: "Folder",
     addFileButton: "Component"
   },
+  
   backend: {
     user: {
       get:    file => `../api/user/shape/get?filePath=${file}`,
