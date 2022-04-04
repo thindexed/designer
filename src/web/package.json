@@ -6,8 +6,7 @@
   "scripts": {
     "build": "webpack build",
     "watch": "webpack watch",
-    "serve": "webpack serve --allowed-hosts all --port 8080 --static-directory .  --static-watch  --watch-files ./**/*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "webpack serve --allowed-hosts all --port 8080 --static-directory .  --static-watch  --watch-files ./**/*"
   },
   "keywords": [],
   "author": "Andreas Herz <a.herz@freegroup.de> (http://draw2d.org/)",
