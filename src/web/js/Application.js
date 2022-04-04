@@ -107,7 +107,7 @@ class Application {
       this.load(global, "global")
     }
     else {
-      this.fileNew()
+      this.view.showWelcomeMessage()
     }
 
     // listen on the history object to load files
@@ -225,7 +225,7 @@ class Application {
 
   load(name, scope){
     let url = conf.backend[scope].get(name)
-    this.view.clear()
+    this.view.reset()
     $("#leftTabStrip .editor").click()
 
     return this.storage.loadUrl(url)
@@ -233,8 +233,7 @@ class Application {
         if (typeof content === "string"){
           content = JSON.parse(content)
         }
-        this.view.clear()
-        this.view.centerDocument()
+        this.view.reset()
         let reader = new draw2d.io.json.Reader()
         reader.unmarshal(this.view, content.draw2d || content)
         this.getConfiguration()

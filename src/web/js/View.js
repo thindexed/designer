@@ -106,8 +106,6 @@ export default draw2d.Canvas.extend({
     })
 
     this.reset()
-
-    this.showWelcomeMessage()
   },
 
   setCursor: function (cursor) {
@@ -126,12 +124,10 @@ export default draw2d.Canvas.extend({
    *
    */
   reset: function () {
-
     this.fireEvent("select")
     // remove the figure from a selection handler as well and cleanup the
     // selection feedback
     this.getSelection().each((i,figure) => {
-      console.log(i,figure)
       this.editPolicy.each((i, policy) => {
         if (typeof policy.unselect === "function") {
           policy.unselect(this, figure)
@@ -140,9 +136,12 @@ export default draw2d.Canvas.extend({
     })
 
     this.clear()
+    this.hideWelcomeMessage()
   },
 
+
   showWelcomeMessage(){
+    this.hideWelcomeMessage()
     let tmpl = $("#welcomeTemplate").html()
     $("#editor .workspace").append(tmpl)
 
@@ -151,10 +150,14 @@ export default draw2d.Canvas.extend({
     })
 
     $("#welcomeOpenExample").on("click", ()=>{
-      this.app.load("/basic/math/binary-addition.sheet","global")
+      this.app.load("/circuit/digital/gate/IEC60617-12/AND.shape","global")
     })
   },
   
+  hideWelcomeMessage() {
+    $("#editor .welcomeMessage").remove()
+  },
+
   /**
    * Override the "add" method of the normal canvas. In the Designer "lines" and normal "figures" are handled
    * in the very same way. Without that it is impossible to sort line in between of normal figures.
