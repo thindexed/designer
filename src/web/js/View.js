@@ -72,9 +72,6 @@ export default draw2d.Canvas.extend({
       let c = $("#draw2dCanvasWrapper")
       this.setZoom(newZoom)
       this.scrollTo((bb.y / newZoom - c.height() / 2), (bb.x / newZoom - c.width() / 2))
-
-      // c.scrollTop((bb.y / newZoom - c.height() / 2))
-      // c.scrollLeft((bb.x / newZoom - c.width() / 2))
     }
 
     // Inject the ZoomIn Button and the callbacks
@@ -109,6 +106,8 @@ export default draw2d.Canvas.extend({
     })
 
     this.reset()
+
+    this.showWelcomeMessage()
   },
 
   setCursor: function (cursor) {
@@ -143,6 +142,19 @@ export default draw2d.Canvas.extend({
     this.clear()
   },
 
+  showWelcomeMessage(){
+    let tmpl = $("#welcomeTemplate").html()
+    $("#editor .workspace").append(tmpl)
+
+    $("#welcomeNewDocument").on("click", ()=>{
+      this.app.fileNew("NewDocument","user")
+    })
+
+    $("#welcomeOpenExample").on("click", ()=>{
+      this.app.load("/basic/math/binary-addition.sheet","global")
+    })
+  },
+  
   /**
    * Override the "add" method of the normal canvas. In the Designer "lines" and normal "figures" are handled
    * in the very same way. Without that it is impossible to sort line in between of normal figures.
