@@ -11,9 +11,13 @@ export default {
   
   backend: {
     user: {
-      get:    file => `../api/user/shape/get?filePath=${file}`,
-      image:  file => `../shapes/user/${file}`,
-      list:   path => `../api/user/shape/list?path=${path}`
+      get:    file => `../shapes/user/get?filePath=${file}`,
+      image:  file => `../shapes/user/image?filePath=${file}`,
+      list:   path => `../shapes/user/list?path=${path}`,
+      rename:         `../shapes/user/rename`,
+      delete:         `../shapes/user/delete`,
+      folder:         `../shapes/user/folder`,
+      save:           `../shapes/user/save`
     },
 
     global:{
