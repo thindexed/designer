@@ -89,12 +89,12 @@ export default shape_designer.FigureWriter = draw2d.io.Writer.extend({
         let typeMapping ={
           "Input": "new DecoratedInputPort()",
           "Output": "new DecoratedOutputPort()",
-          "Hybrid": "\"hybrid\""
+          "Hybrid": "new DecoratedHybridPort()"
         }
         let methodMapping = {
           "Input": "addPort",
           "Output": "addPort",
-          "Hybrid": "createPort"
+          "Hybrid": "addPort"
         }
         ports.push({
           type: typeMapping[figure.getInputType()],

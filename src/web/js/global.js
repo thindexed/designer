@@ -1,4 +1,5 @@
 
+import DecoratedHybridPort from "../common/js/DecoratedHybridPort"
 import DecoratedInputPort from "../common/js/DecoratedInputPort"
 import DecoratedOutputPort from "../common/js/DecoratedOutputPort"
 import CircuitFigure from "./figure/CircuitFigure"
@@ -13,6 +14,7 @@ export default {
   hardware,
   DecoratedInputPort,
   DecoratedOutputPort,
+  DecoratedHybridPort,
   LabelInplaceEditor,
   Mousetrap,
   CircuitFigure,
