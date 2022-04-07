@@ -263,12 +263,13 @@ class Application {
 
   fileSave() {
     this.setConfiguration()
-    fileSave.show(this.currentFile, this.storage,this.view, () => {
-      this.hasUnsavedChanges = false
-      toast("Saved")
-      $("#editorFileSave div").removeClass("highlight")
-      this.filePane.refresh(conf, this.permissions.shapes, this.currentFile)
-    })
+    fileSave.show(this.currentFile, this.storage,this.view)
+      .then( (filePath) => {
+        this.hasUnsavedChanges = false
+        toast("Saved")
+        $("#editorFileSave div").removeClass("highlight")
+        this.filePane.refresh(conf, this.permissions.shapes, this.currentFile)
+      })
   }
 
 
