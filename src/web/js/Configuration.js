@@ -12,7 +12,7 @@ export default {
   backend: {
     user: {
       get:    file => `../shapes/user/get?filePath=${file}`,
-      image:  file => `../shapes/user/image?filePath=${file}`,
+      image:  file => `../shapes/user/get?filePath=${file.replace('.shape','.png')}`,
       list:   path => `../shapes/user/list?path=${path}`,
       rename:         `../shapes/user/rename`,
       delete:         `../shapes/user/delete`,
@@ -22,7 +22,7 @@ export default {
 
     global:{
       get:    file => `../shapes/global/get?filePath=${file}`,
-      image:  file => `../shapes/global/image?filePath=${file}`,
+      image:  file => `../shapes/global/get?filePath=${file.replace('.shape','.png')}`,
       list:   path => `../shapes/global/list?path=${path}`,
       rename:         `../shapes/global/rename`,
       delete:         `../shapes/global/delete`,
