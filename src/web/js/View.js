@@ -1,3 +1,4 @@
+import conf from "./Configuration"
 
 export default draw2d.Canvas.extend({
 
@@ -150,7 +151,15 @@ export default draw2d.Canvas.extend({
     })
 
     $("#welcomeOpenExample").on("click", ()=>{
-      this.app.load("/circuit/digital/gate/IEC60617-12/AND.shape","global")
+      let file = "/digital/gate/IEC60617-12/AND.shape"
+      let scope = "global"
+      this.app.load(file, scope).then(() => {
+        history.pushState({
+          id: 'editor',
+          scope: scope,
+          file: file
+        }, conf.appName+' | ' + file, window.location.href.split('?')[0] + '?'+scope+'=' + file)
+      })
     })
   },
   
