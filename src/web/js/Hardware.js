@@ -3,21 +3,6 @@
 //
 export default {
 
-  raspi: {
-    set: function (pin, value) {
-    },
-    mode: function (pin, value) {
-    },
-    pwm: function (pin, value) {
-    },
-    get: function (pin) {
-      return false
-    },
-    on: function(event, callback){
-    },
-    connected: false
-  },
-
   arduino: {
     set: function (pin, value) {
     },

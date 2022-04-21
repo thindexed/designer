@@ -23,28 +23,36 @@ export default shape_designer.filter.BlurFilter = class BlurFilter extends Filte
       '</div>')
 
     $("#filter_blur").TouchSpin({
-      min: 0,
+      min: 1,
       max: 5,
       step: 1
     })
 
-    $("#filter_blur").on("change", $.proxy(function () {
-      this.setBlur(parseInt($("#filter_blur").val()))
-    }, figure))
+    $("#filter_blur").on("change", () => { 
+      console.log("set blur")
+      figure.setBlur(parseInt($("#filter_blur").val()))
+    })
 
 
-    $("#button_remove_" + this.cssScope).on("click", $.proxy(function () {
+    $("#button_remove_" + this.cssScope).on("click", () => {
       figure.removeFilter(this)
-      figure.setBlur(0)
+      figure.setBlur(-1)
       $('#' + this.containerId).animate({
         "height": "0",
         "opacity": 0,
         "margin-bottom": 0
-      }, 500, function () {
+      }, 500, () => 
+      {
         $('#' + this.containerId).remove()
       })
-    }, this))
+    })
   }
+
+  apply(figure, attributes) {
+    console.log("apply")
+    figure.shape.blur(Math.max(1,figure.blur))
+  }
+
 }
 
 

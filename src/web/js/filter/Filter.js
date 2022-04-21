@@ -7,14 +7,7 @@ export default class Filter {
     this.containerId= this.cssScope+"_container"
   }
 
-  /**
-   * @method
-   * Sent when an event occurs on the command stack. draw2d.command.CommandStackEvent.getDetail()
-   * can be used to identify the type of event which has occurred.
-   *
-   * @template
-   *
-   **/
+
   apply(figure, attributes) {
   }
 
