@@ -11,12 +11,12 @@ export default shape_designer.filter.FillColorFilter = class FillColorFilter ext
   insertPane(figure, $parent) {
 
     $parent.append('<div id="' + this.containerId + '" class="panel panel-default">' +
-      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#color_fill_panel">' +
+      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#' + this.cssScope + '_panel">' +
       '    Color Fill' +
-      '    <span id="button_remove_FillColorFilter"><img class="svg icon pull-right" src="./images/dialog_close.svg"/><span>' +
+      '    <span id="button_remove_' + this.cssScope + '"><i class="pull-right fa fa-trash"></i></span>' +
       ' </div>' +
 
-      ' <div class="panel-body collapse in" id="color_fill_panel">' +
+      ' <div class="panel-body collapse in" id="' + this.cssScope + '_panel">' +
       '   <div class="form-group">' +
       '      <div class="input-group" ></div> ' + // required to ensure the correct width of the siblings
       '      <div class="input-group">' +
@@ -26,7 +26,6 @@ export default shape_designer.filter.FillColorFilter = class FillColorFilter ext
       '    </div>' +
       ' </div>' +
       '</div>')
-    inlineSVG.init({svgSelector:"#"+this.containerId + " img.svg"})
 
     var picker = this.colorPicker = new jscolor.color(document.getElementById('filter_color_fill'), {})
     this.colorPicker.fromString(figure.getBackgroundColor().hash())
@@ -34,7 +33,7 @@ export default shape_designer.filter.FillColorFilter = class FillColorFilter ext
       this.setBackgroundColor("#" + picker.toString())
     }, figure)
 
-    $("#button_remove_FillColorFilter").on("click", $.proxy(function () {
+    $("#button_remove_" + this.cssScope).on("click", $.proxy(function () {
       figure.removeFilter(this)
       figure.setBackgroundColor(null)
       $("#"+this.containerId).animate({"height": "0", "opacity": 0, "margin-bottom": 0}, 500, function () {

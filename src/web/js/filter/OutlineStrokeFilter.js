@@ -12,12 +12,12 @@ export default shape_designer.filter.OutlineStrokeFilter = class OutlineStrokeFi
   insertPane(figure, $parent) {
 
     $parent.append('<div id="' + this.containerId + '" class="panel panel-default">' +
-      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#outlinestroke_width_panel">' +
+      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#' + this.cssScope + '_panel">' +
       '     Outline Stroke' +
-      '    <img id="button_remove_OutlineStrokeFilter" class="icon pull-right" src="./images/dialog_close.svg"/>' +
+      '    <span id="button_remove_' + this.cssScope + '"><i class="pull-right fa fa-trash"></i></span>' +
       '</div>' +
 
-      ' <div class="panel-body collapse in" id="outlinestroke_width_panel">' +
+      ' <div class="panel-body collapse in" id="' + this.cssScope + '_panel">' +
       '   <div class="form-group">' +
       '      <div class="input-group" ></div> ' + // required to ensure the correct width of the siblings
       '       <input id="filter_outlinestroke" type="text" value="' + figure.getOutlineStroke() + '" name="filter_outlinestroke" class="mousetrap-pause form-control" />' +
@@ -28,8 +28,6 @@ export default shape_designer.filter.OutlineStrokeFilter = class OutlineStrokeFi
       '   </div>' +
       ' </div>' +
       '</div>')
-
-    inlineSVG.init({svgSelector:"#"+this.containerId + " img.svg"})
 
     $("input[name='filter_outlinestroke']")
       .TouchSpin({
@@ -51,7 +49,7 @@ export default shape_designer.filter.OutlineStrokeFilter = class OutlineStrokeFi
       this.setOutlineColor("#" + picker.toString())
     }, figure)
 
-    $("#button_remove_OutlineStrokeFilter").on("click", () => {
+    $("#button_remove_" + this.cssScope).on("click", () => {
       figure.removeFilter(this)
       figure.setOutlineStroke(0)
       $("#"+this.containerId).animate({"height": "0", "opacity": 0, "margin-bottom": 0}, 500, () => {

@@ -9,19 +9,18 @@ export default shape_designer.filter.FontSizeFilter = class FontSizeFilter exten
   insertPane(figure, $parent) {
 
     $parent.append('<div id="' + this.containerId + '" class="panel panel-default">' +
-      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#fontsize_width_panel">' +
+      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#' + this.cssScope + '_panel">' +
       '     Font Size' +
-      '    <span id="button_remove_FontSizeFilter"><img  class="svg icon pull-right" src="./images/dialog_close.svg"/></span>' +
+      '    <span id="button_remove_' + this.cssScope + '"><i class="pull-right fa fa-trash"></i></span>' +
       '</div>' +
 
-      ' <div class="panel-body collapse in" id="fontsize_width_panel">' +
+      ' <div class="panel-body collapse in" id="' + this.cssScope + '_panel">' +
       '   <div class="form-group">' +
       '      <div class="input-group" ></div> ' + // required to ensure the correct width of the siblings
       '       <input id="filter_fontsize" type="text" value="' + figure.getFontSize() + '" name="filter_fontsize" class="mousetrap-pause form-control" />' +
       '   </div>' +
       ' </div>' +
       '</div>')
-    inlineSVG.init({svgSelector:"#"+this.containerId + " img.svg"})
 
     $("#filter_fontsize").TouchSpin({
       min: 4,
@@ -37,7 +36,7 @@ export default shape_designer.filter.FontSizeFilter = class FontSizeFilter exten
     }, figure))
 
 
-    $("#button_remove_FontSizeFilter").on("click", () => {
+    $("#button_remove_" + this.cssScope).on("click", () => {
       figure.removeFilter(this)
       figure.setFontSize(12)
       $("#"+this.containerId).animate({"height": "0", "opacity": 0, "margin-bottom": 0}, 500, () => {

@@ -9,11 +9,11 @@ export default shape_designer.filter.OpacityFilter = class OpacityFilter extends
   insertPane(figure, $parent) {
 
     $parent.append('<div id="' + this.containerId + '" class="panel panel-default">' +
-      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#opacity_panel">' +
+      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#' + this.cssScope + '_panel">' +
       '    Opacity' +
-      '    <span id="button_remove_OpacityFilter"><img  class="svg icon pull-right" src="./images/dialog_close.svg"/></span>' +
+      '    <span id="button_remove_' + this.cssScope + '"><i class="pull-right fa fa-trash"></i></span>' +
       '</div>' +
-      ' <div class="panel-body collapse in" id="opacity_panel">' +
+      ' <div class="panel-body collapse in" id="' + this.cssScope + '_panel">' +
       '   <div class="form-group">' +
       '      <div class="input-group" ></div> ' + // required to ensure the correct width of the siblings
       '      <div class="input-group">' +
@@ -22,7 +22,6 @@ export default shape_designer.filter.OpacityFilter = class OpacityFilter extends
       '   </div>' +
       ' </div>' +
       '</div>')
-    inlineSVG.init({svgSelector:"#"+this.containerId + " img.svg"})
 
     $("#filter_opacity").TouchSpin({
       min: 0,
@@ -36,7 +35,7 @@ export default shape_designer.filter.OpacityFilter = class OpacityFilter extends
       this.setAlpha(parseInt($("#filter_opacity").val()) / 100.0)
     }, figure))
 
-    $("#button_remove_OpacityFilter").on("click", () => {
+    $("#button_remove_" + this.cssScope ).on("click", () => {
       figure.removeFilter(this)
       figure.setAlpha(1)
       $("#"+this.containerId).animate({"height": "0", "opacity": 0, "margin-bottom": 0}, 500, () => {

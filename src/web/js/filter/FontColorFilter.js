@@ -12,12 +12,12 @@ export default shape_designer.filter.FontColorFilter = class FontColorFilter ext
   insertPane(figure, $parent) {
 
     $parent.append('<div id="' + this.containerId + '" class="panel panel-default">' +
-      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#color_fill_panel">' +
+      ' <div class="panel-heading filter-heading" data-toggle="collapse" data-target="#' + this.cssScope + '_panel">' +
       '    Font Color' +
-      '    <span id="button_remove_FontColorFilter"><img class="svg icon pull-right" src="./images/dialog_close.svg"/></span>' +
+      '    <span id="button_remove_' + this.cssScope + '"><i class="pull-right fa fa-trash"></i></span>' +
       ' </div>' +
 
-      ' <div class="panel-body collapse in" id="color_fill_panel">' +
+      ' <div class="panel-body collapse in" id="' + this.cssScope + '_panel">' +
       '   <div class="form-group">' +
       '      <div class="input-group" ></div> ' + // required to ensure the correct width of the siblings
       '      <div class="input-group">' +
@@ -27,7 +27,6 @@ export default shape_designer.filter.FontColorFilter = class FontColorFilter ext
       '    </div>' +
       ' </div>' +
       '</div>')
-    inlineSVG.init({svgSelector:"#"+this.containerId + " img.svg"})
 
     let picker = this.colorPicker = new jscolor.color(document.getElementById('filter_color_fill'), {})
     this.colorPicker.fromString(figure.getFontColor().hash())
@@ -35,7 +34,7 @@ export default shape_designer.filter.FontColorFilter = class FontColorFilter ext
       this.setFontColor("#" + picker.toString())
     }, figure)
 
-    $("#button_remove_FontColorFilter").on("click", () => {
+    $('#button_remove_' + this.cssScope ).on("click", () => {
       figure.removeFilter(this)
       figure.setFontColor(null)
       $("#"+this.containerId).animate({"height": "0", "opacity": 0, "margin-bottom": 0}, 500, () => {
